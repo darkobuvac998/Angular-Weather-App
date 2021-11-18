@@ -3,17 +3,12 @@ import { CommonModule } from '@angular/common';
 import { NavBarComponent } from '../navigation/nav-bar/nav-bar.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
-
-
+import { WeatherIconComponent } from './weather-icon/weather-icon.component';
+import { CollapseButtonComponent } from './collapse-button/collapse-button.component';
 
 @NgModule({
-  declarations: [
-    NavBarComponent,
-    SearchComponent
-  ],
-  imports: [
-    CommonModule, FormsModule
-  ], 
-  exports: [NavBarComponent, FormsModule]
+  declarations: [NavBarComponent, SearchComponent, WeatherIconComponent, CollapseButtonComponent],
+  imports: [CommonModule, FormsModule],
+  exports: [NavBarComponent, FormsModule],
 })
-export class NavModule { }
+export class NavModule {}
