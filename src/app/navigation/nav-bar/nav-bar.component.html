@@ -1,6 +1,9 @@
 <div class="bg-opacity-100 container h-100" style="background-color: #33495f;">
-    <div class="d-flex justify-content-end">
-        <collapse-button></collapse-button>
+    <div class="block float-none">
+        <div class="d-flex justify-content-end">
+            <!-- <span *ngIf="!this.collapse">{{'Anuglar weather'}}</span> -->
+            <collapse-button (modeChange)="onCollapse($event)"></collapse-button>
+        </div>
     </div>
     <ng-container *ngIf="!this.collapse">
         <div class="center block float-none">
@@ -11,6 +14,9 @@
                     </div>
                     <div class="row justify-content-center">
                         <search></search>
+                    </div>
+                    <div class="row mt-3">
+                        <time-select-button [timeTitle]="'Today'" [btnMode]="0"></time-select-button>
                     </div>
                 </div>
             </div>

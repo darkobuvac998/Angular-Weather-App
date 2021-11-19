@@ -3,11 +3,12 @@ import { Component, ContentChild, EventEmitter, OnInit, Output, TemplateRef } fr
 @Component({
   selector: 'nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.css'], 
 })
 export class NavBarComponent implements OnInit {
 
   public collapse: boolean = false;
+  public mode: number = 1;
 
   @Output() collapseNavBar: EventEmitter<any> = new EventEmitter<any>();
 
@@ -16,9 +17,14 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onCollapse(){
+  onCollapse(value: number){
+    this.mode = value;
     this.collapse = !this.collapse;
     this.collapseNavBar.emit(this.collapse);
+  }
+
+  get modeName(){
+    return this.collapse ? 'collapsed' : 'notCollapsed';
   }
 
 }
