@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavBarMode } from '../nav-bar/nav-bar.component';
 
 @Component({
@@ -7,7 +7,7 @@ import { NavBarMode } from '../nav-bar/nav-bar.component';
   styleUrls: ['./collapse-button.component.css'],
 })
 export class CollapseButtonComponent implements OnInit {
-  public collapsed: boolean = false;
+  @Input() public collapsed: boolean = null;
   public mode: number = NavBarMode.NotCollapsed;
 
   @Output() modeChange: EventEmitter<any> = new EventEmitter<any>();
@@ -17,7 +17,6 @@ export class CollapseButtonComponent implements OnInit {
   ngOnInit(): void {}
 
   onModeChange() {
-    console.log('Collapse button clicked');
     this.mode == NavBarMode.Collapsed
       ? (this.mode = NavBarMode.NotCollapsed)
       : (this.mode = NavBarMode.Collapsed);

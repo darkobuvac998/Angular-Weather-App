@@ -46,21 +46,28 @@
 }
 
 .btn-7 {
-    background: rgb(61, 158, 238);
+    background: rgb(136, 164, 187);
     color: whitesmoke;
     line-height: 42px;
     padding: 0;
     border: none;
     z-index: 1;
     -webkit-transition: all 0.3s linear;
-    transition: all 0.5s linear;
+    transition: all 1s linear;
+}
+
+.btn-7 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .btn-7:hover {
     background: transparent;
     color: rgb(189, 180, 180);
     letter-spacing: 0.2rem;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.8s ease;
 }
 
 .btn-7:before,
@@ -73,19 +80,161 @@
     right: 0;
     z-index: -1;
     background: rgb(5, 82, 145);
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
 }
 
 .btn-7:before {
     top: 0;
+    right: 0;
+    transition: all 500ms ease;
 }
 
 .btn-7:after {
+    left: 0;
     bottom: 0;
+    transition: all 500ms ease;
+}
+
+.btn-7:hover {
+    color: rgb(163, 148, 148);
+    background: transparent;
+}
+
+.btn-7:hover:before {
+    transition: all 500ms ease;
+    height: 100%;
+}
+
+.btn-7:hover:after {
+    transition: all 500ms ease;
+    height: 100%;
 }
 
 .btn-7:hover:before,
 .btn-7:hover:after {
     height: 0;
-    background-color:rgb(61, 158, 238);
+    background-color: rgb(191, 200, 207);
+}
+
+.btn-7 span:before,
+.btn-7 span:after {
+    position: absolute;
+    content: "";
+    background: rgb(163, 148, 148);
+}
+
+.btn-7 span:before {
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 1000ms ease;
+}
+
+.btn-7 span:after {
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 1000ms ease;
+}
+
+.btn-7 span:hover:before {
+    width: 100%;
+}
+
+.btn-7 span:hover:after {
+    width: 100%;
+}
+
+.btn-6 {
+    background: rgb(54, 141, 175);
+    color: #fff;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.btn-6 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-family: 'Raleway Dots', cursive;
+}
+
+.btn-6:before,
+.btn-6:after {
+    position: absolute;
+    content: "";
+    height: 0%;
+    width: 2px;
+    background: rgb(179, 192, 199);
+}
+
+.btn-6:before {
+    right: 0;
+    top: 0;
+    transition: all 1000ms ease;
+}
+
+.btn-6:after {
+    left: 0;
+    bottom: 0;
+    transition: all 1000ms ease;
+}
+
+.btn-6:hover {
+    color: rgb(179, 192, 199);
+    opacity: 50%;
+}
+
+.btn-6:hover:before {
+    transition: all 1000ms ease;
+    height: 100%;
+}
+
+.btn-6:hover:after {
+    transition: all 1000ms ease;
+    height: 100%;
+}
+
+.btn-6 span:before,
+.btn-6 span:after {
+    position: absolute;
+    content: "";
+    background: rgb(179, 192, 199);
+    letter-spacing: 0.3rem;
+    transition: all 0.5s ease;
+}
+
+.btn-6 span:before {
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 500ms ease;
+    letter-spacing: 0.3rem;
+}
+
+.btn-6 span:after {
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 500ms ease;
+    letter-spacing: 0.3rem;
+}
+
+.btn-6:hover{
+    letter-spacing: 0.3rem;
+    transition: all 1s ease;
+}
+
+.btn-6 span:hover:before {
+    width: 100%;
+}
+
+.btn-6 span:hover:after {
+    width: 100%;
 }

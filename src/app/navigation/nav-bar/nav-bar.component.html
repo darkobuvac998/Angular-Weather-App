@@ -1,23 +1,23 @@
 <div class="bg-opacity-100 container h-100" style="background-color: #33495f;">
     <div class="block float-none">
-        <div class="d-flex justify-content-end">
-            <!-- <span *ngIf="!this.collapse">{{'Anuglar weather'}}</span> -->
-            <collapse-button (modeChange)="onCollapse($event)"></collapse-button>
+        <div class="d-flex justify-content-end" [style.margin-bottom]="this.collapse ? '8rem' : '0.1rem'">
+            <collapse-button [collapsed]="this.collapse" (modeChange)="onCollapse($event)"></collapse-button>
         </div>
     </div>
-    <ng-container *ngIf="!this.collapse">
-        <div class="center block float-none">
-            <div class="m-auto m-0">
-                <div class="d-flex flex-column">
-                    <div class="row d-block">
-                        <weather-icon></weather-icon>
-                    </div>
-                    <div class="row justify-content-center">
-                        <search></search>
-                    </div>
-                    <div class="row mt-3">
-                        <time-select-button [timeTitle]="'Today'" [btnMode]="0"></time-select-button>
-                    </div>
+    <ng-container>
+        <div class="m-auto">
+            <div class="d-flex flex-column">
+                <div class="row d-block">
+                    <weather-icon *ngIf="!this.collapse"></weather-icon>
+                </div>
+                <div class="row justify-content-center">
+                    <search #search (searchIcon)="onSearchIconClick()" [collapsed]="this.collapse"></search>
+                </div>
+                <div class="row mt-3">
+                    <weather-time-select [collapsed]="this.collapse"></weather-time-select>
+                </div>
+                <div class="row">
+                    <pin-location-button [collapsed]="this.collapse"></pin-location-button>
                 </div>
             </div>
         </div>

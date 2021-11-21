@@ -9,6 +9,7 @@ export class TimeSelectButtonComponent implements OnInit {
 
   @Input() btnMode: number = null;
   @Input() timeTitle: string = null;
+  @Input() collapsed: boolean = null;
 
   constructor() { }
 
@@ -18,7 +19,6 @@ export class TimeSelectButtonComponent implements OnInit {
   }
 
   onSelect(){
-    console.log(this.btnMode);
     this.selected.emit(this.btnMode);
   }
 

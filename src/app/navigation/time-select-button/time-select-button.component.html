@@ -1,3 +1,11 @@
 <div class="d-flex">
-    <button (click)="onSelect()" type="button" class="custom-btn btn-7">{{this.timeTitle}}</button>
+    <button (click)="onSelect()" type="button" class="custom-btn btn-6">
+        <span *ngIf="!this.collapsed">{{this.timeTitle}}
+        </span>
+        <ng-container *ngIf="collapsed" [ngSwitch]="btnMode">
+            <i *ngSwitchCase="0" class="fas fa-calendar-check"></i>
+            <i *ngSwitchCase="1" class="fas fa-calendar-plus"></i>
+            <i *ngSwitchCase="7" class="fas fa-calendar-alt"></i>
+        </ng-container>
+    </button>
 </div>
