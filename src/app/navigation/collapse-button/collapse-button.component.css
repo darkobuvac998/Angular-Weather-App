@@ -1,0 +1,85 @@
+#burger-toggle {
+    position: relative;
+    appearance: none;
+    opacity: 0;
+    cursor: crosshair;
+}
+
+#burger-toggle:not(:checked)~.burger-menu .line::after {
+    transform: translateX(0);
+}
+
+#burger-toggle:not(:checked)~.burger-menu .line:nth-child(1) {
+
+    transform: scaleX(0.4) translateY(50%) rotate(45deg);
+    transform: translateY(85%) rotate(-45deg) scaleX(.4);
+}
+
+#burger-toggle:not(:checked)~.burger-menu .line:nth-child(2) {
+    transform: scaleX(0.5) translateY(50%) rotate(-45deg);
+    transform: translateY(15%) rotate(45deg) scaleX(.4);
+}
+
+#burger-toggle:not(:checked)~.burger-menu .line:nth-child(3) {
+    opacity: 0;
+    transform: translateX(-25%) translateY(-175%) scaleX(.50);
+}
+
+.burger-menu {
+    --burger-menu-radius: 3em;
+    position: relative;
+    display: inline-flex;
+    width: var(--burger-menu-radius);
+    height: var(--burger-menu-radius);
+    outline: none;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.burger-menu .line {
+    position: absolute;
+    /* right: 7%; */
+    width: 70%;
+    height: 0.2rem;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.burger-menu .line:nth-child(1) {
+    top: 30%;
+}
+
+.burger-menu .line:nth-child(2) {
+    top: 50%;
+}
+
+.burger-menu .line:nth-child(3) {
+    top: 70%;
+}
+
+.burger-menu .line::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(54, 141, 175);
+    transform: translateX(-100%);
+    transition: 0.25s;
+}
+
+.burger-menu .line:nth-child(2)::after {
+    transition-delay: 0.1s;
+}
+
+.burger-menu .line:nth-child(3)::after {
+    transition-delay: 0.2s;
+}
+
+.burger-menu:hover .line::after {
+    transform: translateX(0);
+    border-radius: 20px;
+}

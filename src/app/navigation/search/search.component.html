@@ -1,6 +1,19 @@
 <div class="search__container">
-    <p class="search__title">
-        Enter city name
-    </p> 
-    <input (focusout)="onFocusOut()" [(ngModel)]="searchTerm" id="search" name="search" class="search__input" type="text" placeholder="Search">
+    <ng-container *ngIf="!this.collapsed">
+        <p class="search__title">
+            Enter city name
+        </p>
+        <input #inputField (focusout)="onFocusOut()" [(ngModel)]="searchTerm" id="search" name="search" class="search__input"
+            type="text" placeholder="Search">
+    </ng-container>
+    <ng-container *ngIf="this.collapsed">
+        <div class="d-flex justify-content-center hvr-icon-pulse-grow text-center" (mouseenter)="onMouseHoverIcon()"
+            (mouseleave)="onMouseHoverIcon()">
+            <i class="fas fa-search-location fa-lg hvr-icon" (click)="this.onSearchIconClick()">
+                <span *ngIf="showIconText">
+                    Search
+                </span>
+            </i>
+        </div>
+    </ng-container>
 </div>

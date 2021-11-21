@@ -1,9 +1,10 @@
-.wrapper{
+.wrapper {
     align-items: stretch;
     height: 100%;
-    
+
 }
-.gradient{
-    background: linear-gradient(to right, red,blue);
+
+.gradient {
+    background: linear-gradient(to right, red, blue);
     opacity: calc(75);
 }

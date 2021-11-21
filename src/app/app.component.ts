@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'weather-app';
+
+  public navBarCollapse: boolean = false;
+
+  onCollapse(value: boolean){
+    this.navBarCollapse = value;
+  }
+
 }
