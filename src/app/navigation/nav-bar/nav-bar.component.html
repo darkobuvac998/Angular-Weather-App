@@ -1,12 +1,12 @@
 <div class="bg-opacity-100 container h-100" style="background-color: #33495f;">
-    <div class="block float-none">
+    <div class="d-block float-none">
         <div class="d-flex justify-content-end" [style.margin-bottom]="this.collapse ? '8rem' : '0.1rem'">
             <collapse-button [collapsed]="this.collapse" (modeChange)="onCollapse($event)"></collapse-button>
         </div>
     </div>
     <ng-container>
         <div class="m-auto">
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column gap-xl-3">
                 <div class="row d-block">
                     <weather-icon *ngIf="!this.collapse"></weather-icon>
                 </div>
@@ -17,7 +17,10 @@
                     <weather-time-select [collapsed]="this.collapse"></weather-time-select>
                 </div>
                 <div class="row">
-                    <pin-location-button [collapsed]="this.collapse"></pin-location-button>
+                    <pin-location-button [style.margin-bottom]="this.collapse ? '5rem' : '0.1rem'" [collapsed]="this.collapse"></pin-location-button>
+                </div>
+                <div class="row bottom-0 mt-4">
+                    <weather-clock [collapsed]="this.collapse"></weather-clock>
                 </div>
             </div>
         </div>
