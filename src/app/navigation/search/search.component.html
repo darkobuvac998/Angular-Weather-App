@@ -3,8 +3,8 @@
         <p class="search__title">
             Enter city name
         </p>
-        <input #inputField (focusout)="onFocusOut()" [(ngModel)]="searchTerm" id="search" name="search" class="search__input"
-            type="text" placeholder="Search">
+        <input #inputField (focusout)="onFocusOut()" [(ngModel)]="searchTerm" id="search" name="search"
+            class="search__input" type="text" placeholder="Search">
     </ng-container>
     <ng-container *ngIf="this.collapsed">
         <div class="d-flex justify-content-center hvr-icon-pulse-grow text-center" (mouseenter)="onMouseHoverIcon()"

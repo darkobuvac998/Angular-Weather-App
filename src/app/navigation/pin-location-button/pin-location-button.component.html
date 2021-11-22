@@ -1,9 +1,22 @@
 <div class="d-flex flex-column justify-content-center">
-    <div class="position-sticky wrapper">
-        <div class="pin"></div>
-        <div class="pulse"></div>
-    </div>
-    <div *ngIf="!this.collapsed" class="location-text text-center">
-        Pin location
-    </div>
+    <ng-container *ngIf="!this.collapsed">
+        <div class="container-pin">
+            <div class="position-sticky wrapper m-auto">
+                <div class="pin"></div>
+                <div class="pulse"></div>
+            </div>
+        </div>
+        <div *ngIf="!this.collapsed" class="location-text text-center">
+            Pin location
+        </div>
+    </ng-container>
+    <ng-container *ngIf="this.collapsed">
+        <div (mouseleave)="onMouseLeaveIcon()" (mouseenter)="onMouseEnterIcon()" class="d-flex justify-content-center hvr-icon-pulse-grow text-center mt-5">
+            <i class="fas fa-map-marked-alt fa-lg hvr-icon">
+                <span *ngIf="this.showIconText">
+                    Place
+                </span>
+            </i>
+        </div>
+    </ng-container>
 </div>
