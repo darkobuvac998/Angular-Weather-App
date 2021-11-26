@@ -1,0 +1,11 @@
+getObject<T>(cls: ClassType<T>, resourceUrl: string, queryParameters: QueryParameters = null): Observable<T> {
+    this.loadingStart = true;
+    let subscription = timer(500).subscribe(() => { this.loading = true; });
+    return this.httpClient.get<T>(queryParameters == null ? resourceUrl : queryParameters.buildUrl(resourceUrl))
+      .pipe
+      (
+        map(res => plainToClass<T, Object>(cls, res)),
+        map(res => { this.resetLoading(subscription); return res; }),
+        catchError(err => { this.resetLoading(subscription); return throwError(err); })
+      );
+  }
