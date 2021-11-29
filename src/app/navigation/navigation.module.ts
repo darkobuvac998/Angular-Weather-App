@@ -10,7 +10,9 @@ import { TimeSelectButtonComponent } from './time-select-button/time-select-butt
 import { WeatherTimeSelectComponent } from './weather-time-select/weather-time-select.component';
 import { PinLocationButtonComponent } from './pin-location-button/pin-location-button.component';
 import { WeatherClockComponent } from './weather-clock/weather-clock.component';
-
+import { WeatherNavService } from './weather-nav.service';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { DelayDirective } from './delay.directive';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,18 @@ import { WeatherClockComponent } from './weather-clock/weather-clock.component';
     TimeSelectButtonComponent,
     WeatherTimeSelectComponent,
     PinLocationButtonComponent,
-    WeatherClockComponent
+    WeatherClockComponent,
+    SearchResultComponent,
+    DelayDirective,
   ],
   imports: [CommonModule, FormsModule, BrowserAnimationsModule],
   exports: [NavBarComponent, FormsModule],
+  providers: [
+    { provide: WeatherNavService, useClass: WeatherNavService },
+    {
+      provide: 'API_NOMINATIM_URL',
+      useValue: 'https://nominatim.openstreetmap.org/search.php',
+    },
+  ],
 })
 export class NavModule {}

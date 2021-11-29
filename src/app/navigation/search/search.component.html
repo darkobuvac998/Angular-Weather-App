@@ -17,3 +17,6 @@
         </div>
     </ng-container>
 </div>
+<ng-container *ngIf="this.places$ | async as data">
+    <search-result [collapsed]="this.collapsed" [places]="data"></search-result>
+</ng-container>
