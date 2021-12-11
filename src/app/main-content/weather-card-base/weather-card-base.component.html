@@ -1,3 +1,13 @@
-<div class="h-100 w-100">
-
+<div class="h-100 w-100 d-flex justify-content-center m-1 card" [style.background]="bckg">
+    <div class="d-flex flex-row">
+        <div class="w-75">
+            <ng-container *ngTemplateOutlet="mainTemplate; context:{$implicit: item, location: item?.location, current: item?.current}"></ng-container>
+        </div>
+        <div *ngIf="true" class="w-25">
+            <ng-container>Here goes detail template</ng-container>
+        </div>
+    </div>
+    <div>
+        <ng-container>Here goes more detaile template</ng-container>
+    </div>
 </div>
