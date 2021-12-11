@@ -14,7 +14,8 @@ import {
   filter,
   map,
 } from 'rxjs/operators';
-import { PlaceData, WeatherNavService } from '../weather-nav.service';
+import { Place } from 'src/app/models/place.model';
+import { WeatherNavService } from '../weather-nav.service';
 
 @Component({
   selector: 'search',
@@ -30,7 +31,7 @@ export class SearchComponent implements AfterViewInit {
 
   selectedPlace: boolean = true;
 
-  places$: Observable<PlaceData[]>;
+  places$: Observable<Place[]>;
 
   constructor(public navService: WeatherNavService) {}
 
@@ -39,6 +40,7 @@ export class SearchComponent implements AfterViewInit {
       .pipe(
         map((event) => this.input?.nativeElement.value),
         filter((data: string) => data?.length >= 3),
+        map(res => {this.navService.loading = true; return res}),
         debounceTime(800),
         distinctUntilChanged()
       )

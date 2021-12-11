@@ -1,16 +1,17 @@
 import { Inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
 import { plainToInstance } from 'class-transformer';
-import { from, Observable } from 'rxjs';
+import { from, Observable, throwError } from 'rxjs';
+import { Place } from '../models/place.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherNavService {
-  private _places: PlaceData[];
+  private _places: Place[];
 
-  public get places(): PlaceData[] {
+  public get places(): Place[] {
     return this._places;
   }
   public set places(value: any) {
@@ -19,31 +20,49 @@ export class WeatherNavService {
     }
   }
 
+  public loading: boolean = null;
+
   constructor(
     private http: HttpClient,
-    @Inject('API_NOMINATIM_URL') private apiUrl: String
+    @Inject('X-RAPID-SEARCH') private apiUrl: String,
+    @Inject('X-RAPIDAPI-HOST') private host: String,
+    @Inject('X-RAPIDAPI-KEY') private key: String
   ) {}
 
   getPlaceNames(value: string) {
+    this.loading = true;
+    let headers: HttpHeaders = new HttpHeaders({
+      'x-rapidapi-host': this.host.toString(),
+      'x-rapidapi-key': this.key.toString(),
+    });
     return this.http
-      .get<Object[]>(`${this.apiUrl}?q=${value}&format=jsonv2`)
+      .get<Object[]>(`${this.apiUrl}?q=${value}`, { headers: headers })
       .pipe(
         map((result: Object[]) => {
-          let places = plainToInstance<PlaceData, Object>(PlaceData, result);
+          let places = plainToInstance<Place, Object>(Place, result);
           return places;
         }),
         map((places) => {
           return places.map(
             (place) =>
               ({
-                display_name: place.display_name,
-                type: place.type,
+                country: place.country,
+                id: place.id,
                 lat: place.lat,
                 lon: place.lon,
-              } as PlaceData)
+                name: place.name,
+                region: place.region,
+                url: place.url,
+              } as Place)
           );
         }),
-        map((places) => filterPlaces(places))
+        map((res) => {
+          this.loading = false;
+          return res;
+        }),
+        catchError((err) => {
+          return throwError(err);
+        })
       );
   }
 
@@ -54,24 +73,3 @@ export class WeatherNavService {
   }
 }
 
-export class PlaceData {
-  display_name: string;
-  type: string;
-  lat: number;
-  lon: number;
-}
-
-export function filterPlaces(places: PlaceData[]): PlaceData[] {
-  let filteredPlaces: Array<PlaceData> = [];
-  while (places.length > 0) {
-    let head = places.shift();
-    filteredPlaces.push(head);
-    places = places.filter((place) => {
-      return (
-        Math.round(place.lon) != Math.round(head.lon) ||
-        Math.round(place.lat) != Math.round(head.lat)
-      );
-    });
-  }
-  return filteredPlaces;
-}

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './appRoutes.routes';
 import { NavModule } from './navigation/navigation.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,9 +16,27 @@ import { NavModule } from './navigation/navigation.module';
     NavModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    SharedModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'X-RAPIDAPI-HOST',
+      useValue: 'weatherapi-com.p.rapidapi.com',
+    },
+    {
+      provide: 'X-RAPIDAPI-KEY',
+      useValue: '61bbab777dmshf47abef888d106bp18342djsnddd763958468',
+    },
+    {
+      provide: 'X-RAPID-CURRENT',
+      useValue: 'https://weatherapi-com.p.rapidapi.com/current.json'
+    },
+    {
+      provide: 'X-RAPID-FORECAST',
+      useValue: 'https://weatherapi-com.p.rapidapi.com/forecast.json'
+    }
+  ],
   bootstrap: [AppComponent],
   exports: [],
 })

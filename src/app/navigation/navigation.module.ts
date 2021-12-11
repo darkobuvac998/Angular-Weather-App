@@ -13,6 +13,7 @@ import { WeatherClockComponent } from './weather-clock/weather-clock.component';
 import { WeatherNavService } from './weather-nav.service';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { DelayDirective } from './delay.directive';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,17 @@ import { DelayDirective } from './delay.directive';
     SearchResultComponent,
     DelayDirective,
   ],
-  imports: [CommonModule, FormsModule, BrowserAnimationsModule],
+  imports: [CommonModule, FormsModule, BrowserAnimationsModule, SharedModule],
   exports: [NavBarComponent, FormsModule],
   providers: [
     { provide: WeatherNavService, useClass: WeatherNavService },
     {
       provide: 'API_NOMINATIM_URL',
       useValue: 'https://nominatim.openstreetmap.org/search.php',
+    },
+    {
+      provide: 'X-RAPID-SEARCH',
+      useValue: 'https://weatherapi-com.p.rapidapi.com/search.json',
     },
   ],
 })

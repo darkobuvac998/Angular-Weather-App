@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PlaceData } from '../weather-nav.service';
+import { Place } from 'src/app/models/place.model';
 
 @Component({
   selector: 'search-result',
@@ -8,19 +8,19 @@ import { PlaceData } from '../weather-nav.service';
 })
 export class SearchResultComponent implements OnInit {
 
-  @Input() places: PlaceData[];
+  @Input() places: Place[];
   @Input() collapsed: boolean;
 
-  public selectedPlace: PlaceData;
+  public selectedPlace: Place;
 
-  @Output() onResultItemClick: EventEmitter<PlaceData> = new EventEmitter<PlaceData>();
+  @Output() onResultItemClick: EventEmitter<Place> = new EventEmitter<Place>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  handleOnResultItemClick(item: PlaceData){
+  handleOnResultItemClick(item: Place){
     console.log(item);
     this.onResultItemClick.emit(item);
     this.selectedPlace = item;
