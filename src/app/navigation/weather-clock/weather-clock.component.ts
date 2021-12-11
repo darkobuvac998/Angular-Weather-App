@@ -28,8 +28,6 @@ export class WeatherClockComponent implements OnInit, OnDestroy {
     this.seconds = (time.getSeconds() * -1).toString() + 's';
     this.minutes = (time.getMinutes() * 60 * -1).toString() + 's';
     this.hours = ((time.getHours() + 1) * 3600 * -1).toString() + 's';
-
-    console.log(this.hours + this.minutes + this.seconds);
   }
 
   ngOnDestroy() {}

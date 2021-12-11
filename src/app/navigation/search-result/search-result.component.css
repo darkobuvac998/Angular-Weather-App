@@ -1,0 +1,99 @@
+ul {
+    padding: 0;
+    max-width: 100%;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    /* padding: 12px 2px; */
+    box-sizing: border-box;
+    font-family: 'Raleway Dots', cursive;
+    color: white;
+    max-width: 250px;
+    /* background: rgb(60, 141, 173); */
+    /* text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; */
+}
+
+li:hover {
+    cursor: pointer;
+    transition: 500ms ease-in-out;
+    /* white-space: normal; */
+
+}
+
+li::before {
+    font-size: 1.5rem;
+    text-align: right;
+    font-weight: bold;
+    min-width: 50px;
+    padding-right: 4px;
+    font-variant-numeric: tabular-nums;
+    align-self: flex-start;
+    /* background-image: linear-gradient(to bottom, aquamarine, orangered); */
+    background-attachment: fixed;
+    -webkit-text-fill-color: transparent;
+}
+
+li+li {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.box-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.box {
+    padding: 0.6rem;
+    /* margin: 2%; */
+    width: 100%;
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+    transition: .2s all;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.box span {
+    display: inline-block;
+    width: 100%;
+}
+
+.box span li {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: right 2s linear;
+    right: 0px;
+}
+
+.box:active span, .box:hover span {
+    width: auto;
+}
+
+.box:active span li, .box:hover span li {
+    right: calc(400px - 5px - 100%);
+    text-overflow: clip;
+    overflow: visible;
+}
+
+.box-wrap:hover .box {
+    filter: blur(1px);
+    opacity: .8;
+    /* transform: scale(.98); */
+    box-shadow: none;
+}
+
+.box-wrap:hover .box:hover {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+    box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
+}

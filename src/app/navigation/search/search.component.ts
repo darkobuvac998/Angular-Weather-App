@@ -1,18 +1,59 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { fromEvent, Observable } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+} from 'rxjs/operators';
+import { Place } from 'src/app/models/place.model';
+import { WeatherNavService } from '../weather-nav.service';
 
 @Component({
   selector: 'search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements AfterViewInit {
   @Input() public collapsed: boolean = false;
   public showIconText: boolean = null;
 
   @Output() searchIcon: EventEmitter<any> = new EventEmitter<any>();
-  @ViewChild('inputField') input: ElementRef;
+  @ViewChild('inputField') input: ElementRef<any>;
 
-  constructor() {}
+  selectedPlace: boolean = true;
+
+  places$: Observable<Place[]>;
+
+  constructor(public navService: WeatherNavService) {}
+
+  ngAfterViewInit() {
+    fromEvent<InputEvent>(this.input?.nativeElement, 'input')
+      .pipe(
+        map((event) => this.input?.nativeElement.value),
+        filter((data: string) => data?.length >= 3),
+        map(res => {this.navService.loading = true; return res}),
+        debounceTime(800),
+        distinctUntilChanged()
+      )
+      .subscribe(
+        (result) => {
+          this.places$ = this.navService.getPlaceNames(result);
+        },
+        (err: any) => {
+          console.log(err);
+        },
+        () => {}
+      );
+  }
 
   private _searchTerm: string = null;
 
@@ -33,10 +74,10 @@ export class SearchComponent implements OnInit {
   }
 
   onFocusOut() {
-    this._searchTerm = null;
+    if (!this.selectedPlace) {
+      this._searchTerm = null;
+    }
   }
-
-  ngOnInit(): void {}
 
   onMouseHoverIcon() {
     this.showIconText = !this.showIconText;
@@ -47,7 +88,7 @@ export class SearchComponent implements OnInit {
     this.searchIcon.emit();
   }
 
-  focusSearchBar(){
+  focusSearchBar() {
     this.input.nativeElement.select();
   }
 }

@@ -1,0 +1,21 @@
+<ng-container *ngIf="!!this.places && !this.collapsed">
+    <div class="position-relative mt-2">
+        <div class="d-flex flex-column gap-1">
+            <ng-container *ngIf="!!places">
+                <div class="box-wrap">
+                    <ul>
+                        <ng-container *ngFor="let place of places; index as i">
+                            <div class="box" (click)="handleOnResultItemClick(place)">
+                                <span>
+                                    <li>
+                                        {{place.name}}
+                                    </li>
+                                </span>
+                            </div>
+                        </ng-container>
+                    </ul>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>
