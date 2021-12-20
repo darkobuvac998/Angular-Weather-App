@@ -7,6 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { fromEvent, Observable } from 'rxjs';
 import {
   debounceTime,
@@ -15,6 +16,9 @@ import {
   map,
 } from 'rxjs/operators';
 import { Place } from 'src/app/models/place.model';
+import { Weather } from 'src/app/models/weather.model';
+import { MainService } from 'src/app/services/main.service';
+import { QueryParameters } from 'src/app/shared/QueryParameters.model';
 import { WeatherNavService } from '../weather-nav.service';
 
 @Component({
@@ -33,14 +37,21 @@ export class SearchComponent implements AfterViewInit {
 
   places$: Observable<Place[]>;
 
-  constructor(public navService: WeatherNavService) {}
+  constructor(
+    public navService: WeatherNavService,
+    private mainService: MainService,
+    private router: Router
+  ) {}
 
   ngAfterViewInit() {
     fromEvent<InputEvent>(this.input?.nativeElement, 'input')
       .pipe(
         map((event) => this.input?.nativeElement.value),
         filter((data: string) => data?.length >= 3),
-        map(res => {this.navService.loading = true; return res}),
+        map((res) => {
+          this.navService.loading = true;
+          return res;
+        }),
         debounceTime(800),
         distinctUntilChanged()
       )
@@ -90,5 +101,10 @@ export class SearchComponent implements AfterViewInit {
 
   focusSearchBar() {
     this.input.nativeElement.select();
+  }
+
+  onSearchResultSelection(item: Place) {
+    this.mainService.getForecast(new QueryParameters(item.name, '1'));
+    this.router.navigate(['weather']);
   }
 }

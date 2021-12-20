@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center wci">
+    <ng-container [ngSwitch]="condition">
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[0]" class="fas fa-cloud fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[1]" class="bi bi-sun fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[2]" class="bi bi-cloud-drizzle fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[3]" class="fas fa-cloud-sun fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[4]" class="bi bi-cloud-rain fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[5]" class="fas fa-smog fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[6]" class="bi bi-cloud-fog fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[7]" class="bi bi-cloud-lightning-rain fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[8]" class=""></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[9]" class="bi bi-cloud-snow-fill fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[10]" class="bi bi-cloud-haze-fill fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[11]" class="bi bi-cloud-snow fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[12]" class="fas fa-snowflake fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[13]" class="bi bi-snow2 fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[14]" class="bi bi-clouds fa-5x"></i>
+        <i [@pulse]="startAnimate" (@pulse.done)="onAnimationEnd()" *ngSwitchCase="conditions[15]" class="bi bi-thermometer-snow fa-5x"></i>
+    </ng-container>
+</div>

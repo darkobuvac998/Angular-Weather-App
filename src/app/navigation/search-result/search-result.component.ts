@@ -4,10 +4,9 @@ import { Place } from 'src/app/models/place.model';
 @Component({
   selector: 'search-result',
   templateUrl: './search-result.component.html',
-  styleUrls: ['./search-result.component.css']
+  styleUrls: ['./search-result.component.css'],
 })
 export class SearchResultComponent implements OnInit {
-
   @Input() places: Place[];
   @Input() collapsed: boolean;
 
@@ -15,19 +14,14 @@ export class SearchResultComponent implements OnInit {
 
   @Output() onResultItemClick: EventEmitter<Place> = new EventEmitter<Place>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  handleOnResultItemClick(item: Place){
-    console.log(item);
+  handleOnResultItemClick(item: Place) {
     this.onResultItemClick.emit(item);
     this.selectedPlace = item;
     this.places = [];
     this.places.push(item);
   }
-
-
-
 }

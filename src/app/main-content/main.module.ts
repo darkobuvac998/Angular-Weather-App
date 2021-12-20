@@ -4,6 +4,9 @@ import { WeatherMainComponent } from './weather-main/weather-main.component';
 import { WeatherBaseComponent } from './weather-base/weather-base.component';
 import { WeatherCardBaseComponent } from './weather-card-base/weather-card-base.component';
 import { MainRoutingModule } from './main-routing.module';
+import { WeatherDataFieldComponent } from './weather-data-field/weather-data-field.component';
+import { SharedModule } from '../shared/shared.module';
+import { WeatherCardIconComponent } from './weather-card-icon/weather-card-icon.component';
 
 
 
@@ -11,11 +14,15 @@ import { MainRoutingModule } from './main-routing.module';
   declarations: [
     WeatherMainComponent,
     WeatherBaseComponent,
-    WeatherCardBaseComponent
+    WeatherCardBaseComponent,
+    WeatherDataFieldComponent,
+    WeatherCardIconComponent
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
-  ]
+    MainRoutingModule,
+    SharedModule
+  ],
+  
 })
 export class MainModule { }
