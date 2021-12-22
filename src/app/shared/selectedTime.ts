@@ -1,5 +1,5 @@
 export enum Time{
-    Today,
-    Tomorrow,
-    SevenDays
+    Today = 0,
+    Tomorrow = 1,
+    ThreeDays = 2
 }

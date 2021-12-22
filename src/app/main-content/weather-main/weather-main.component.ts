@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Weather } from 'src/app/models/weather.model';
 import { MainService } from 'src/app/services/main.service';
 import { WeatherCardBaseComponent } from '../weather-card-base/weather-card-base.component';
+import { WeatherCardIconComponent } from '../weather-card-icon/weather-card-icon.component';
 
 @Component({
   selector: 'weather-main',
@@ -15,6 +16,8 @@ export class WeatherMainComponent extends WeatherCardBaseComponent {
     super(mainService);
   }
 
+  @ViewChild('weahterIcon') weahterIcon: WeatherCardIconComponent;
+
   ngOnInit(): void {
     this.showMainTemplate = true;
     this.showDetail = true;
@@ -22,7 +25,6 @@ export class WeatherMainComponent extends WeatherCardBaseComponent {
   }
 
   onShowDetail() {
-    console.log(this.showMainTemplate);
     this.showMainTemplate = !this.showMainTemplate;
     this.showDetailAdvanced == null
       ? (this.showDetailAdvanced = null)

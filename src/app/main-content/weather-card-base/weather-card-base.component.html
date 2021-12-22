@@ -1,6 +1,6 @@
 <div  class=" d-flex justify-content-center m-1 card" [style.background]="background">
     <div class="d-flex flex-row">
-        <div class="w-75" *ngIf="showMainTemplate">
+        <div [ngClass]="{'w-75': showDetail, 'w-100': !showDetail}" *ngIf="showMainTemplate">
             <ng-container
                 *ngTemplateOutlet="mainTemplate; context:{$implicit: item, location: item?.location, current: item?.current, condition: item?.current?.condition, today: item?.forecast?.forecastday[0]?.day}">
             </ng-container>

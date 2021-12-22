@@ -1,8 +1,11 @@
 <div class="h-100 w-100 bg-info d-flex justify-content-center">
-    <div class="flex-1">
-        <weather-main [item]="item"></weather-main>
+    <div *ngIf="item">
+        <div class="flex-1">
+            <weather-main [item]="item"></weather-main>
+        </div>
+        <div class="d-flex justify-content-center w-50 flex-row">
+            <weather-hour-card [item]="item" [index]="22"></weather-hour-card>
+            <weather-hour-card [item]="item" [index]="23"></weather-hour-card>
+        </div>
     </div>
-    <!-- <div>
-        <app-weather-data-field></app-weather-data-field>
-    </div> -->
 </div>

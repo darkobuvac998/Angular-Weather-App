@@ -24,6 +24,7 @@ import { Conditions } from 'src/app/shared/conditions';
     trigger('pulse', [
       state('start', style({ transform: 'scale(1,1)' })),
       state('end', style({ transform: 'scale(1,1)' })),
+      state('stop', style({ transition: 'scale(1,1)' })),
       transition('*<=>*', [
         animate(
           '2s',
@@ -38,6 +39,7 @@ import { Conditions } from 'src/app/shared/conditions';
           ])
         ),
       ]),
+      transition('stop=>*', animate(5000)),
     ]),
   ],
 })
@@ -57,7 +59,6 @@ export class WeatherCardIconComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
     this.ngOnInit();
   }
 
@@ -67,5 +68,9 @@ export class WeatherCardIconComponent implements OnInit, OnChanges {
       : (this.startAnimate = 'start');
 
     this.changeDetector.detectChanges();
+  }
+
+  onStopAnimation() {
+    this.startAnimate = 'stop';
   }
 }

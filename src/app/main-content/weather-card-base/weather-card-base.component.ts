@@ -19,14 +19,15 @@ import { MainService } from '../../services/main.service';
   selector: 'weather-card-base',
   templateUrl: './weather-card-base.component.html',
   styleUrls: ['./weather-card-base.component.css'],
-  styles: [':host{width: auto; height: auto}']
+  styles: [':host{width: auto; height: auto}'],
 })
-export class WeatherCardBaseComponent implements OnInit, OnChanges, AfterViewInit {
+export class WeatherCardBaseComponent
+  implements OnInit, OnChanges, AfterViewInit
+{
   public background: string = null;
   @Input()
   public item: Weather;
   public weatherIcon: any;
-  public time: any;
   @Input()
   public showDetail: boolean = null;
   @Input()
@@ -49,28 +50,14 @@ export class WeatherCardBaseComponent implements OnInit, OnChanges, AfterViewIni
 
   ngOnInit(): void {}
 
-  ngAfterViewInit(): void {
-      
-  }
+  ngAfterViewInit(): void {}
 
   calculateBackground(value: number): void {
     if (this.item?.forecast) {
       let day = this.item?.forecast?.forecastday[value].day;
-      let maxTempColor = Colors.getColorByTemperature(day.maxtemp_c).replace(
-        "'",
-        ''
-      );
+      let maxTempColor = Colors.getColorByTemperature(day.maxtemp_c);
       let minTempColor = Colors.getColorByTemperature(day.mintemp_c);
       this.background = `linear-gradient(to bottom, ${maxTempColor}, ${minTempColor})`;
     }
-  }
-  onHover(): void {
-    this.showMainTemplate = !this.showMainTemplate;
-    this.showDetail == null
-      ? (this.showDetail = null)
-      : (this.showDetail = !this.showDetail);
-    this.showDetailAdvanced == null
-      ? (this.showDetailAdvanced = null)
-      : (this.showDetailAdvanced = !this.showDetailAdvanced);
   }
 }

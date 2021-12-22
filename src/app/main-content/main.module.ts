@@ -7,6 +7,8 @@ import { MainRoutingModule } from './main-routing.module';
 import { WeatherDataFieldComponent } from './weather-data-field/weather-data-field.component';
 import { SharedModule } from '../shared/shared.module';
 import { WeatherCardIconComponent } from './weather-card-icon/weather-card-icon.component';
+import { WeatherHourCardComponent } from './weather-hour-card/weather-hour-card.component';
+import { WeatherHourListComponent } from './weather-hour-list/weather-hour-list.component';
 
 
 
@@ -16,7 +18,9 @@ import { WeatherCardIconComponent } from './weather-card-icon/weather-card-icon.
     WeatherBaseComponent,
     WeatherCardBaseComponent,
     WeatherDataFieldComponent,
-    WeatherCardIconComponent
+    WeatherCardIconComponent,
+    WeatherHourCardComponent,
+    WeatherHourListComponent
   ],
   imports: [
     CommonModule,

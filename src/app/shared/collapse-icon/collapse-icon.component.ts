@@ -41,6 +41,31 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
         ),
       ]),
     ]),
+    trigger('pulseVertical', [
+      state('startV', style({transform: 'scale(1,1)'})),
+      state('endV', style({transform: 'scale(1,1)'})),
+      transition('*<=>*', [
+        animate(
+          '2s',
+          keyframes([
+            style({ transform: 'scale(1,1)' }),
+            style({ transform: 'scale(1.5,1)' }),
+            style({ transform: 'scale(2,1)' }),
+            style({ transform: 'scale(2.5,1)' }),
+            style({ transform: 'scale(3,1)' }),
+            style({ transform: 'scale(3.5,1)' }),
+            style({ transform: 'scale(4,1)' }),
+            style({ transform: 'scale(4,1)' }),
+            style({ transform: 'scale(3.5,1)' }),
+            style({ transform: 'scale(3,1)' }),
+            style({ transform: 'scale(2.5,1)' }),
+            style({ transform: 'scale(2,1)' }),
+            style({ transform: 'scale(1.5,1)' }),
+            style({ transform: 'scale(1,1)' }),
+          ])
+        ),
+      ]),
+    ]),
   ],
 })
 export class CollapseIconComponent implements OnInit {
@@ -48,6 +73,7 @@ export class CollapseIconComponent implements OnInit {
   @Output() public clicked: EventEmitter<any> = new EventEmitter<any>();
 
   public animate: string = 'start';
+  public animateV: string = 'startV';
 
   constructor() {}
 
@@ -59,5 +85,8 @@ export class CollapseIconComponent implements OnInit {
 
   onAnimationDone(){
     this.animate = this.animate == 'start' ? 'end' : 'start';
+  }
+  onAnimationDoneV(){
+    this.animateV = this.animateV == 'startV' ? 'endV' : 'startV';
   }
 }

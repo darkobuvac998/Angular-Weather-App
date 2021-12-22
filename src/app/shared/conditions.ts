@@ -14,5 +14,6 @@ export enum Conditions{
     HeavySnow = 'Heavy snow',
     ModerateSnow = 'Moderate snow',
     Overcast = 'Overcast',
-    FreezingFog = 'Freezing fog'
+    FreezingFog = 'Freezing fog',
+    LightSnow = 'Light Snow'
 }

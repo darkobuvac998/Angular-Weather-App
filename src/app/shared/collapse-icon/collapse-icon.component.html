@@ -2,7 +2,7 @@
     <ng-container [ngSwitch]="direction">
         <i [@pulse]="animate" (@pulse.done)="onAnimationDone()" (click)="onClick()" *ngSwitchCase="'left'" class="fas fa-chevron-left ms-2"></i>
         <i [@pulse]="animate" (@pulse.done)="onAnimationDone()" (click)="onClick()" *ngSwitchCase="'right'" class="fas fa-chevron-right me-2"></i>
-        <i [@pulse]="animate" (@pulse.done)="onAnimationDone()" (click)="onClick()" *ngSwitchCase="'down'" class="fas fa-chevron-down mb-2"></i>
-        <i [@pulse]="animate" (@pulse.done)="onAnimationDone()" (click)="onClick()" *ngSwitchCase="'up'" class="fas fa-chevron-up ms-2"></i>
+        <i [@pulseVertical]="animateV" (@pulseVertical.done)="onAnimationDoneV()" (click)="onClick()" *ngSwitchCase="'down'" class="fas fa-chevron-down mb-2"></i>
+        <i [@pulseVertical]="animateV" (@pulseVertical.done)="onAnimationDoneV()" (click)="onClick()" *ngSwitchCase="'up'" class="fas fa-chevron-up ms-2"></i>
     </ng-container>
 </div>

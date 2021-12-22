@@ -16,7 +16,7 @@ import {
   // styles: []
 })
 export class WeatherDataFieldComponent implements AfterViewInit {
-  @Input() disabled: boolean = false;
+  @Input() disabled: boolean = true;
   @Input() value: string = null;
 
   @ContentChild('labelText', { read: ElementRef })

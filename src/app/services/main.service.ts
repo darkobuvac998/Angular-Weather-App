@@ -12,6 +12,8 @@ export class MainService {
   private weatherData: Subject<Weather> = new Subject<Weather>();
   public weatherData$: Observable<Weather> = this.weatherData.asObservable();
 
+  public timeSelected: number = 0;
+
   constructor(private httpService: HttpService) {}
 
   public getCurrent(params: QueryParameters) {
