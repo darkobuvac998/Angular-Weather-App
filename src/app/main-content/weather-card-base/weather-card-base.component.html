@@ -1,3 +1,18 @@
-<div class="h-100 w-100">
-
+<div  class=" d-flex justify-content-center m-1 card" [style.background]="background">
+    <div class="d-flex flex-row">
+        <div [ngClass]="{'w-75': showDetail, 'w-100': !showDetail}" *ngIf="showMainTemplate">
+            <ng-container
+                *ngTemplateOutlet="mainTemplate; context:{$implicit: item, location: item?.location, current: item?.current, condition: item?.current?.condition, today: item?.forecast?.forecastday[0]?.day}">
+            </ng-container>
+        </div>
+        <div *ngIf="showDetail" class="w-25">
+            <ng-container *ngTemplateOutlet="detailTemplate; context: {$implicit: item, current: item?.current}">
+            </ng-container>
+        </div>
+    </div>
+    <div *ngIf="showDetailAdvanced">
+        <ng-container
+            *ngTemplateOutlet="detailAdvancedTemplate; context:{$implicit: item, astro: item?.forecast?.forecastday[0]?.astro, day: item?.forecast?.forecastday[0]?.day, hour:item?.forecast?.forecastday[0]?.hour}">
+        </ng-container>
+    </div>
 </div>

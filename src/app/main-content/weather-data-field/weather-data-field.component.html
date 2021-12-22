@@ -1,0 +1,6 @@
+<ng-container *ngIf="value">
+    <div class="d-flex flex-column flex-1">
+        <label id="labelText" #labelText class="wd-label" for="data"></label>
+        <input id="data" class="weather-data" [disabled]="disabled" [value]="value" type="text" name="search" />
+    </div>
+</ng-container>

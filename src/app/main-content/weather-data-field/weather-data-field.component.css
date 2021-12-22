@@ -1,0 +1,27 @@
+.weather-data{
+    border-radius: 2rem;
+    position: relative;
+    font-family: 'Raleway Dots', cursive;
+    width: 100%;
+    /* background-color: transparent; */
+    opacity: 0.35;
+    border: 0.05rem solid whitesmoke;
+    transform-style: preserve-3d;
+    /* margin: 0.2rem; */
+    /* color: rgb(124, 108, 108); */
+    color: rgb(49, 49, 49);
+    font-size: 0.8rem;
+    padding: 2px;
+    box-sizing: border-box;
+    padding-left: 1rem;
+}
+.wd-label {
+    font-family: 'Raleway Dots', cursive;
+    font-size: 0.6rem;
+    margin-left: 0.4rem;
+    /* margin-top: 0.7rem; */
+    display: block;
+    transition: all 0.3s;
+    transform: translateY(0rem);
+    color: whitesmoke;
+  }
