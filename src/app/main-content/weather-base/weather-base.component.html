@@ -1,11 +1,25 @@
-<div class="h-100 w-100 bg-info d-flex justify-content-center">
+<div class="h-100 w-100 bg-info d-flex flex-column justify-content-center">
     <div *ngIf="item">
-        <div class="flex-1">
+        <div class="d-flex justify-content-center mb-1">
             <weather-main [item]="item"></weather-main>
         </div>
-        <div class="d-flex justify-content-center w-50 flex-row">
-            <weather-hour-card [item]="item" [index]="22"></weather-hour-card>
-            <weather-hour-card [item]="item" [index]="23"></weather-hour-card>
+        <div class="d-flex justify-content-center">
+            <div class="ms-5 me-2 d-flex align-self-center">
+                <collapse-icon (clicked)="onListScroll(-1)" [direction]="'left'"></collapse-icon>
+            </div>
+            <div style="width: 95%;">
+                <div class=" w-80 flex-fill" style="width: 100%;">
+                    <weather-hour-list #weatherList [item]="item"></weather-hour-list>
+                </div>
+            </div>
+            <div class="me-5 ms-2 d-flex align-self-center">
+                <collapse-icon (clicked)="onListScroll(1)" [direction]="'right'"></collapse-icon>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center" style="width: 100%;">
+            <div class="align-self-center" style="width: 90%;">
+                <weather-temp-chart [item]="item"></weather-temp-chart>
+            </div>
         </div>
     </div>
 </div>

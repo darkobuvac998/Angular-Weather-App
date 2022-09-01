@@ -6,7 +6,7 @@ export enum Conditions{
     LightRain = 'Light rain',
     Mist = 'Mist',
     Fog = 'Fog',
-    PatchyRainPossible = 'Pathcy rain possible',
+    PatchyRainPossible = 'Patchy rain possible',
     Default = 'Default',
     ModerateOrHeavySnowShowers = 'Moderate or heavy snow showers',
     Cloudy = 'Cloudy',
@@ -15,5 +15,5 @@ export enum Conditions{
     ModerateSnow = 'Moderate snow',
     Overcast = 'Overcast',
     FreezingFog = 'Freezing fog',
-    LightSnow = 'Light Snow'
+    LightSnow = 'Light snow'
 }

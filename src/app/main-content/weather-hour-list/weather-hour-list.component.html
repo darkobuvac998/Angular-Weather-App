@@ -1,0 +1,10 @@
+<div class="w-auto app">
+    <div class="hs full" #list>
+        <ng-container *ngFor="let hour of hours; let i = index">
+            <div class="h-100 item">
+                <weather-hour-card class="h-100 flex-fill" *ngIf="i>=indexStart" [item]="item" [index]="i">
+                </weather-hour-card>
+            </div>
+        </ng-container>
+    </div>
+</div>

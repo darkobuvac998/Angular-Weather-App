@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { WeatherCardIconComponent } from './weather-card-icon/weather-card-icon.component';
 import { WeatherHourCardComponent } from './weather-hour-card/weather-hour-card.component';
 import { WeatherHourListComponent } from './weather-hour-list/weather-hour-list.component';
+import { WeatherTempChartComponent } from './weather-temp-chart/weather-temp-chart.component';
 
 
 
@@ -20,7 +21,8 @@ import { WeatherHourListComponent } from './weather-hour-list/weather-hour-list.
     WeatherDataFieldComponent,
     WeatherCardIconComponent,
     WeatherHourCardComponent,
-    WeatherHourListComponent
+    WeatherHourListComponent,
+    WeatherTempChartComponent
   ],
   imports: [
     CommonModule,

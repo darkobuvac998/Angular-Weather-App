@@ -3,10 +3,12 @@ import {
   Component,
   OnDestroy,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Weather } from 'src/app/models/weather.model';
 import { MainService } from 'src/app/services/main.service';
+import { WeatherHourListComponent } from '../weather-hour-list/weather-hour-list.component';
 
 @Component({
   selector: 'weather-base',
@@ -17,6 +19,8 @@ import { MainService } from 'src/app/services/main.service';
 export class WeatherBaseComponent implements OnInit, OnDestroy {
   public item: Weather;
   public dataSubscription: Subscription;
+
+  @ViewChild('weatherList') weatherList: WeatherHourListComponent;
 
   constructor(private mainService: MainService) {}
 
@@ -35,4 +39,13 @@ export class WeatherBaseComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.dataSubscription.unsubscribe();
   }
+
+  onListScroll(value: number){
+    if (value == 1) {
+      this.weatherList.onNextMoveList();
+    } else if (value == -1) {
+      this.weatherList.onPreviousMoveList();
+    }
+  }
+
 }
